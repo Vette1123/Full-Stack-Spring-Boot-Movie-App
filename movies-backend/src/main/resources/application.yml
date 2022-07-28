@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  shutdown: graceful
+
+logging:
+  level[net.talaatharb.movies]: DEBUG
+  level[org.springframework.web]: DEBUG
+
+spring:
+  jpa:
+    open-in-view: false
+    database: default
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:h2:file:./db/movies;AUTO_SERVER=TRUE;
+    username: sa
+    password:
+  application:
+    name: movies-backend
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
