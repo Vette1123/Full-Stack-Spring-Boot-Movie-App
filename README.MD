@@ -5,11 +5,13 @@
 ## To run the program, please use the following commands:
 
 ```sh
-Change directory to movies-backend folder and run the backend, after configuring your database.
+Change directory to movies-backend folder and run the backend,
+after configuring your database.
 ```
 
 ```sh
-Change directory to movies-frontend folder and run the frontend, and run `npm install` to install all the dependencies.
+Change directory to movies-frontend folder and run the frontend,
+and run `npm install` to install all the dependencies.
 ```
 
 ```sh
