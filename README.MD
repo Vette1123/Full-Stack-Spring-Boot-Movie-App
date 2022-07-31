@@ -30,6 +30,6 @@ Configure your environment variables
 - [x] User can view the release date of a movie
 - [x] User can view the cast of a movie
 - [x] User can view the reviews of a movie
-- [x] User can interace with a cool slider
+- [x] User can interace with a cool slider, to slide between reviews and top 5 rated movies
 - [x] User can view the top rated movies
 - [x] User can visit related links, contact us on discord for any questions or suggestions
