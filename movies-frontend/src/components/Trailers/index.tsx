@@ -1,11 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router'
+import { MovieTrailer } from '../../models/Movie'
 import moviesServices from '../../services/MovieService'
 import './Trailers.scss'
 
+interface videoProps {
+  item: MovieTrailer
+  key: number
+}
 const VideoList = () => {
   const { id } = useParams()
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState<MovieTrailer[]>([])
 
   const getVideos = async () => {
     if (id) {
@@ -29,7 +34,7 @@ const VideoList = () => {
     </>
   )
 }
-const Video = (props: any) => {
+const Video = (props: videoProps) => {
   const { item } = props
   const iframeRef = useRef<HTMLIFrameElement>(null)
 

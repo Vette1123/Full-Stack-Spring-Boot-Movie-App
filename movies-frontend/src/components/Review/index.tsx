@@ -6,6 +6,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import moviesServices from '../../services/MovieService'
 import './Review.scss'
 
+interface ReviewProps {
+  item: MovieReview
+  className: string
+}
+
 const Review = () => {
   const { id } = useParams<{ id: string }>()
   const [review, setReview] = useState<MovieReview[]>([])
@@ -21,6 +26,7 @@ const Review = () => {
 
   useEffect(() => {
     getUserReview()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -54,7 +60,7 @@ const Review = () => {
     </>
   )
 }
-const ReviewSlide = (props: any) => {
+const ReviewSlide = (props: ReviewProps) => {
   const { item } = props
 
   return (

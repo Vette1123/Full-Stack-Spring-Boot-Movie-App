@@ -7,7 +7,7 @@ import './MovieCard.scss'
 const { w500Image } = Url
 
 const MovieCard = (props: any) => {
-  const item = props.item
+  const { item } = props
 
   const link = '/movies/' + item.id
 
