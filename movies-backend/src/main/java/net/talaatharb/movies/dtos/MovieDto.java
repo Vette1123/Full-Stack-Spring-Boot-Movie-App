@@ -2,7 +2,9 @@ package net.talaatharb.movies.dtos;
 
 import lombok.Data;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Id;
+import java.util.List;
 
 @Data
 public class MovieDto {
@@ -16,4 +18,5 @@ public class MovieDto {
     private boolean adult;
     private String release_date;
     private String original_title;
+    private String revenue;
 }

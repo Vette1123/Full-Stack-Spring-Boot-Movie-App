@@ -2,9 +2,8 @@ package net.talaatharb.movies.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -21,4 +20,5 @@ public class Movie {
     private boolean adult;
     private String release_date;
     private String original_title;
+    private String revenue;
 }

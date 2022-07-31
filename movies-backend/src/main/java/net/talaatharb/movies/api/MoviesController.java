@@ -10,6 +10,7 @@ import net.talaatharb.movies.facades.MovieFacade;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "/api/v1/movies")
+@CrossOrigin(origins = "*")
 public class MoviesController {
 	
 	private final MovieFacade movieFacade;
@@ -22,7 +23,7 @@ public class MoviesController {
 	public ResponseEntity<Object> getMovie(@PathVariable Integer id){
 		return new ResponseEntity<>(movieFacade.getMovie(id), HttpStatus.OK);
 	}
-	@GetMapping(path = "/movie")
+	@GetMapping(path = "/search")
 	public ResponseEntity<Object> searchMovie(@RequestParam String title){
 		return new ResponseEntity<>(movieFacade.searchMovie(title), HttpStatus.OK);
 	}

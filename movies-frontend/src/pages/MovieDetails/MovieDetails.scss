@@ -1,0 +1,126 @@
+@use '../../scss/' as *;
+
+.banner {
+  height: 50vh;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include overlay();
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-image: linear-gradient(to top, $body-bg, rgba($black, 0));
+  }
+}
+
+.movie-content {
+  @include flex(flex-start, flex-start);
+  max-width: 1260px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -200px;
+  position: relative;
+  padding: 0 2rem;
+
+  &__poster {
+    flex: 1;
+
+    @include mobile {
+      display: none;
+    }
+
+    &__img {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: $border-radius;
+      padding-top: 165%;
+    }
+  }
+
+  &__info {
+    width: 70%;
+    padding-left: 2rem;
+    position: relative;
+
+    @include mobile {
+      width: 100%;
+      padding-left: 0;
+    }
+    &__row {
+      display: grid;
+      grid-template-columns: repeat(3, 2fr);
+      grid-gap: 1rem;
+      margin-bottom: 1rem;
+
+      @include tablet {
+        grid-template-columns: repeat(2, 2fr);
+      }
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &__vote {
+      @include flex(center, unset);
+      &__average {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-left: 1rem;
+      }
+    }
+    &__release {
+      @include flex(center, unset);
+      &__date {
+        flex: 1;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-left: 1rem;
+        @include mobile {
+          font-size: 1.2rem;
+        }
+      }
+      @include mobile {
+        font-size: 1.2rem;
+      }
+    }
+    &__revenue {
+      @include flex(center, unset);
+      &__amount {
+        font-size: 1.36rem;
+        font-weight: 700;
+        margin-left: 1rem;
+        @include mobile {
+          font-size: 1.2rem;
+        }
+      }
+      @include mobile {
+        font-size: 1.2rem;
+      }
+    }
+
+    & > * {
+      margin-bottom: 2rem;
+    }
+
+    .title {
+      font-size: 4rem;
+      line-height: 1;
+    }
+  }
+}

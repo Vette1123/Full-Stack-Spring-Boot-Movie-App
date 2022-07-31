@@ -1,29 +1,28 @@
-import React from 'react';
 import {
   BrowserRouter as Router,
   Navigate,
   Route,
-  Routes
-} from "react-router-dom";
-import './App.scss';
-import Home from './pages/Home';
-import MovieDetails from './pages/MovieDetails';
+  Routes,
+} from 'react-router-dom'
+import Home from './pages/Home'
+import MovieDetails from './pages/MovieDetails'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import 'swiper/css'
+import './App.scss'
 
 function App() {
   return (
-    <div className="app">
-      <Router>
-        <Routes>
-          <Route
-            path="*"
-            element={<Navigate to="/movies" replace />}
-          />
-          <Route path="movies" element={<Home />} />
-          <Route path="movies/:id" element={<MovieDetails />} />
-        </Routes>
-      </Router>
-    </div>
-  );
+    <Router>
+      <Header />
+      <Routes>
+        <Route path='movies' element={<Home />} />
+        <Route path='movies/:id' element={<MovieDetails />} />
+        <Route path='*' element={<Navigate to='/movies' replace />} />
+      </Routes>
+      <Footer />
+    </Router>
+  )
 }
 
-export default App;
+export default App

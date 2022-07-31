@@ -20,6 +20,7 @@ public class MovieMapper {
             movie.setAdult(movieDto.isAdult());
             movie.setRelease_date(movieDto.getRelease_date());
             movie.setOriginal_title(movieDto.getOriginal_title());
+            movie.setRevenue(movieDto.getRevenue());
         return movie;
     }
 }
