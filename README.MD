@@ -10,7 +10,7 @@ after configuring your database.
 ```
 
 ```sh
-Change directory to movies-frontend folder and run the frontend,
+Change directory to movies-frontend folder to run the frontend,
 and run `npm install` to install all the dependencies.
 ```
 
