@@ -1,12 +1,8 @@
 sudo: required
 services:
   - docker
-
-before_install:
-  - docker build -t docker-react ./movies-frontend
-  - docker build -t docker-backend ./movies-backend
-
-after_success: -docker compose up
+after_success:
+  - docker compose up
 # deploy:
 #   provider: elasticbeanstalk
 #   region: 'us-east-2'
