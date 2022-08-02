@@ -1,0 +1,19 @@
+version: '3'
+#  dockerize react & spring boot app
+services:
+  react:
+    build:
+      context: ./movies-frontend
+      dockerfile: Dockerfile
+    expose:
+      - '3000'
+    ports:
+      - '3000:3000'
+  springboot:
+    build:
+      context: ./movies-backend
+      dockerfile: Dockerfile
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
