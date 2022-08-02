@@ -1,0 +1,10 @@
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\model\Movie.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\api\MoviesController.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\dtos\MoviePage.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\mappers\MovieMapper.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\MoviesBackendApplication.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\config\BeanConfiguration.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\dtos\MovieDto.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\facades\MovieFacade.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\services\MovieDBService.java
+D:\DOCS MOHMA\iti\Cegedim\sadge\internship-2022\sample-full-stack-project\movies-backend\src\main\java\net\talaatharb\movies\reposotiry\MovieRepository.java

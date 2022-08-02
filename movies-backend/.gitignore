@@ -6,7 +6,6 @@
 .settings/
 */.factorypath
 *.classpath
-target
 
 # vscode
 .vscode
