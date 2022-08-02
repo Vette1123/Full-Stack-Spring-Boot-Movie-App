@@ -4,12 +4,9 @@ services:
 
 before_install:
   - docker build -t docker-react ./movies-frontend
+  - docker build -t docker-backend ./movies-backend
 
-script:
-  - docker run docker-react npm run test -- --coverage
-
-after_success:
-  - docker compose up
+after_success: -docker compose up
 # deploy:
 #   provider: elasticbeanstalk
 #   region: 'us-east-2'
