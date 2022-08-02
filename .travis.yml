@@ -1,8 +1,8 @@
 sudo: required
 services:
   - docker
-after_success:
-  - docker compose up
+install:
+  - docker compose up -d
 # deploy:
 #   provider: elasticbeanstalk
 #   region: 'us-east-2'
