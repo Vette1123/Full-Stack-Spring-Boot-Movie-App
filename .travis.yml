@@ -12,14 +12,16 @@ after_success:
   - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push mgado1/docker-react
   - docker push mgado1/docker-backend
-# deploy:
-#   provider: elasticbeanstalk
-#   region: 'us-east-2'
-#   app: 'docker-react'
-#   env: 'DockerReact-env'
-#   bucket_name: 'elasticbeanstalk-us-east-2-123456789'
-#   bucket_path: 'docker-react'
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+# delpoy to AWS
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'docker'
+  env: 'Docker-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-011135588242'
+  bucket_path: 'docker'
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: '$AWS_SECRET_KEY'
