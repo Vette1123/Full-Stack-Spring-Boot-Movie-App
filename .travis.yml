@@ -1,8 +1,17 @@
 sudo: required
 services:
   - docker
-install:
-  - docker compose up -d
+before_install:
+  - docker build -t mgado1/docker-react ./movies-frontend
+  - docker build -t mgado1/docker-backend ./movies-backend
+script:
+  - echo "skipping tests"
+after_success:
+  - docker build -t mgado1/docker-react ./movies-frontend
+  - docker build -t mgado1/docker-backend ./movies-backend
+  - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mgado1/docker-react
+  - docker push mgado1/docker-backend
 # deploy:
 #   provider: elasticbeanstalk
 #   region: 'us-east-2'
