@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t docker-react ./movies-frontend .
+  - docker build -t docker-react ./movies-frontend
 
 script:
   - docker run docker-react npm run test -- --coverage
