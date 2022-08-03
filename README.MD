@@ -38,8 +38,6 @@ Configure your environment variables
 
 ```sh
 User Story 1:
-```
-
 - As a user, I want to view a list of movies, so that I can find a movie I am interested in.
 
 Acceptance Criteria:
@@ -47,6 +45,7 @@ Acceptance Criteria:
 - [x] User can view a list of movies, and select a movie to view the details of the movie.
 - [x] User can interace with a cool slider, to slide between reviews and top 5 rated movies
 - [x] User can visit related links, contact us on discord for any questions or suggestions
+```
 
 User Story 2:
 As a user, I want to view the details of a movie, so that I can learn more about it.
