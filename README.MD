@@ -36,8 +36,8 @@ Configure your environment variables
 
 <!-- User Stories -->
 
-User Story 1:
-As a user, I want to view a list of movies, so that I can find a movie I am interested in.
+- User Story 1:
+- As a user, I want to view a list of movies, so that I can find a movie I am interested in.
 
 Acceptance Criteria:
 
