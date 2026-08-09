@@ -1,142 +1,94 @@
-<h2> 𝐇𝐞𝐥𝐥𝐨 𝐭𝐡𝐞𝐫𝐞, 𝐟𝐞𝐥𝐥𝐨𝐰 <𝚌𝚘𝚍𝚎𝚛𝚜/>!  <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30"></h2>
+# Full-Stack Movie App — Spring Boot + React
 
-<img align='right' src='https://user-images.githubusercontent.com/5713670/87202985-820dcb80-c2b6-11ea-9f56-7ec461c497c3.gif' width='200"'>
+A movie catalogue split into a Spring Boot REST backend and a TypeScript React
+frontend, kept as two applications in one repository and wired together with
+Docker Compose.
 
-## To run the program, please use the following commands:
+**[Live frontend →](https://front-end-only.vercel.app/movies)**
 
-```sh
-Change directory to movies-backend folder and run the backend,
-after configuring your database.
+## Features
+
+- Browse a paginated movie grid
+- Movie detail page with poster art, backdrops, trailers and cast
+- Reviews attached to a movie, submitted from the detail page
+- Header slideshow of featured titles
+- Search input over the catalogue
+- Integration tests against the API layer
+
+## Stack
+
+**Backend** — Java · Spring Boot · Spring Data repositories · Maven
+**Frontend** — React · TypeScript · Create React App · React Router
+**Infra** — Docker + Docker Compose (frontend on `:3000`, API on `:8080`)
+
+## Architecture
+
+The backend is deliberately layered rather than flat — the controller never
+touches persistence directly:
+
+```
+api/MoviesController        # HTTP surface, request/response only
+  └── facades/MovieFacade   # orchestration, the use case
+        ├── services/MovieDBService
+        ├── mappers/MovieMapper     # entity → DTO
+        └── reposotiry/MovieRepository
+model/Movie · dtos/MovieDto · dtos/MoviePage
 ```
 
-```sh
-Change directory to movies-frontend folder to run the frontend,
-and run `npm install` to install all the dependencies.
+Each layer has one reason to change. The mapper exists so the persistence model
+and the JSON contract can drift apart without breaking either: adding a column
+does not silently widen the API response, and renaming a DTO field does not
+touch the schema.
+
+The frontend mirrors that separation — `services/MovieService` and
+`services/api.ts` own every network call, and `models/Movie.ts` and
+`models/MoviePage.ts` type the responses, so no component constructs a URL.
+
+```
+movies-backend/     # Spring Boot API
+movies-frontend/    # React client
+docker-compose.yml  # both, together
 ```
 
-```sh
-Configure your environment variables
+## Running locally
+
+**Everything at once:**
+
+```bash
+git clone https://github.com/Vette1123/Full-Stack-Spring-Boot-Movie-App.git
+cd Full-Stack-Spring-Boot-Movie-App
+docker compose up --build
 ```
 
-<!-- main features -->
+Frontend on `http://localhost:3000`, API on `http://localhost:8080`.
 
-## 📝 Features
+**Separately**, if you want hot reload:
 
-- [x] User can view a list of movies
-- [x] User can Search for a movie, and view the details of the movie selected from the search results using debouncing search.
-- [x] User can view the details of a movie
-- [x] User can view the trailers of a movie
-- [x] User can view the revenue of a movie
-- [x] User can view the release date of a movie
-- [x] User can view the cast of a movie
-- [x] User can view the reviews of a movie
-- [x] User can interace with a cool slider, to slide between reviews and top 5 rated movies
-- [x] User can view the top rated movies
-- [x] User can visit related links, contact us on discord for any questions or suggestions
-
-```sh
-User Story 1:
-- As a user, I want to view a list of movies, so that I can find a movie I am interested in.
-
-Acceptance Criteria:
-
-- [x] User can view a list of movies, and select a movie to view the details of the movie.
-- [x] User can interace with a cool slider, to slide between reviews and top 5 rated movies
-- [x] User can visit related links, contact us on discord for any questions or suggestions
+```bash
+cd movies-backend  && ./mvnw spring-boot:run     # configure your datasource first
+cd movies-frontend && npm install && npm start
 ```
 
-```sh
-User Story 2:
-As a user, I want to view the details of a movie, so that I can learn more about it.
+## Tests
 
-Acceptance Criteria:
-
-- [x] User can view the details of a movie
-- [x] User can view the trailers of a movie
-- [x] User can view the revenue of a movie
-- [x] User can view the release date of a movie
-- [x] User can view the cast of a movie
-- [x] User can view the reviews of a movie, and interace with a cool slider, to slide between reviews
+```bash
+cd movies-backend && ./mvnw test
 ```
 
-```sh
-User Story 3:
-As a user, can search for a movie, so that I can find a movie I am interested in.
+`MoviesControllerIT` and `AbstractControllerIT` exercise the API through the
+full Spring context rather than mocking the layers underneath — slower than
+unit tests, and the only kind that would have caught a broken bean wiring or a
+mapper that silently drops a field.
 
-Acceptance Criteria:
+## Notes
 
-- [x] User can Search for a movie, and view the details of the movie selected from the search results using debouncing search.
-```
+Built in 2022 while learning the Spring ecosystem. The part that took longest
+to trust, coming from JavaScript, was inversion of control: dependencies arrive
+as constructor parameters instead of being constructed where they are used, and
+`MovieRepository` is an *interface* the framework implements at runtime from
+the method names alone. Code that works without an implementation you can open
+and read takes a while to stop feeling like magic.
 
-```sh
-User Story 4:
-As a user, I want to view the top rated movies, so that I can find a movie I am interested in.
+---
 
-Acceptance Criteria:
-
-- [x] User can view the top rated movies
-```
-
-```sh
-User Story 5:
-As a user, I want to view the top rated tv shows, so that I can find a show I am interested in.
-
-Acceptance Criteria:
-
-- [x] User can view the top rated tv shows
-```
-
-```sh
-User Story 6:
-As a user, I want to download a movie, so that I can watch it later.
-
-Acceptance Criteria:
-
-- [x] User can download a movie
-```
-
-```sh
-User Story 7:
-As a user, I want to download a tv show, so that I can watch it later.
-
-Acceptance Criteria:
-
-- [x] User can download a tv show
-```
-
-```sh
-User Story 8:
-As a user, I want to add a movie to my watchlist, so that I can watch it later.
-
-Acceptance Criteria:
-
-- [x] User can add a movie to my watchlist
-```
-
-```sh
-User Story 9:
-As a user, I want to add a tv show to my watchlist, so that I can watch it later.
-
-Acceptance Criteria:
-
-- [x] User can add a tv show to my watchlist
-```
-
-```sh
-User Story 10:
-As a user, I want to get notified when a movie is released, so that I can watch it later.
-
-Acceptance Criteria:
-
-- [x] User can get notified when a movie is released
-```
-
-```sh
-User Story 11:
-
-As a user, I want to use the application on my phone.
-
-Acceptance Criteria:
-
-- [x] User can use the application on my phone
-```
+Built by [Mohamed Gado](https://mohamedgado.com) · 2022
