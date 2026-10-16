@@ -4,7 +4,7 @@ A movie catalogue split into a Spring Boot REST backend and a TypeScript React
 frontend, kept as two applications in one repository and wired together with
 Docker Compose.
 
-**[Live frontend →](https://front-end-only.vercel.app/movies)**
+> **Demo offline.** The hosted frontend is no longer running. See **Running locally** below to start both apps with Docker Compose.
 
 ## Features
 
