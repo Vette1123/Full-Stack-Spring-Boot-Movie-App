@@ -89,6 +89,8 @@ as constructor parameters instead of being constructed where they are used, and
 the method names alone. Code that works without an implementation you can open
 and read felt like magic for a while.
 
+The frontend-only version that came first, straight against the TMDB API, is [React Movies](https://www.mohamedgado.com/projects/react-movies-web-app).
+
 ---
 
 Built by [Mohamed Gado](https://mohamedgado.com) · 2022
