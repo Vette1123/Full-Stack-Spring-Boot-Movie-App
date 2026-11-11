@@ -23,8 +23,8 @@ Docker Compose.
 
 ## Architecture
 
-The backend is deliberately layered rather than flat — the controller never
-touches persistence directly:
+The backend is layered, and the controller never touches persistence
+directly:
 
 ```
 api/MoviesController        # HTTP surface, request/response only
@@ -35,12 +35,12 @@ api/MoviesController        # HTTP surface, request/response only
 model/Movie · dtos/MovieDto · dtos/MoviePage
 ```
 
-Each layer has one reason to change. The mapper exists so the persistence model
-and the JSON contract can drift apart without breaking either: adding a column
-does not silently widen the API response, and renaming a DTO field does not
-touch the schema.
+Each layer has one reason to change. The mapper lets the persistence model
+and the JSON contract drift apart without breaking either. Adding a column
+does not widen the API response, and renaming a DTO field does not touch the
+schema.
 
-The frontend mirrors that separation — `services/MovieService` and
+The frontend follows the same separation. `services/MovieService` and
 `services/api.ts` own every network call, and `models/Movie.ts` and
 `models/MoviePage.ts` type the responses, so no component constructs a URL.
 
@@ -76,9 +76,9 @@ cd movies-backend && ./mvnw test
 ```
 
 `MoviesControllerIT` and `AbstractControllerIT` exercise the API through the
-full Spring context rather than mocking the layers underneath — slower than
-unit tests, and the only kind that would have caught a broken bean wiring or a
-mapper that silently drops a field.
+full Spring context instead of mocking the layers underneath. They are slower
+than unit tests, but only this kind would catch a broken bean wiring or a
+mapper that drops a field.
 
 ## Notes
 
@@ -87,7 +87,7 @@ to trust, coming from JavaScript, was inversion of control: dependencies arrive
 as constructor parameters instead of being constructed where they are used, and
 `MovieRepository` is an *interface* the framework implements at runtime from
 the method names alone. Code that works without an implementation you can open
-and read takes a while to stop feeling like magic.
+and read felt like magic for a while.
 
 ---
 
